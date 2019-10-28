@@ -158,10 +158,10 @@ Hello​
 >>> print(my_string[6:]​)
 World!​
 
->>> print(my_string[-6:]) # ???​
->>> print(my_string[::2]) # ???​
->>> print(my_string  * 2) # ???​
->>> print(my_string + my_string) # ???​
+>>> print(my_string[-6:]) #  World
+>>> print(my_string[::2]) # HloWrd
+>>> print(my_string  * 2) # HelloWorldHello World
+>>> print(my_string + my_string) # HelloWorldHello World
 ```
 
 What did you get? Try different operations to manipulate strings!
