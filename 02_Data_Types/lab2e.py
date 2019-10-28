@@ -16,5 +16,5 @@ for i in x:
         if i.islower() == True:
             lowerCount += 1
 
-print ("Uppercase characters in sentence: " + str(upperCount))
-print ("Lowercase characters in sentence: " + str(lowerCount))
+print("Uppercase characters in sentence: " + str(upperCount))
+print("Lowercase characters in sentence: " + str(lowerCount))
