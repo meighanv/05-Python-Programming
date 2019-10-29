@@ -3,6 +3,6 @@
 milesDriven = input('Provide miles driven:\n')
 gasUsed = input('Provide gallons of gas used:\n')
 
-mpg = float(milesDriven)/float(gasUsed)
+mpg = float(milesDriven)/float(gasUsed)     
 
 print('The miles used per gallon was {:.2f}'.format(mpg))
