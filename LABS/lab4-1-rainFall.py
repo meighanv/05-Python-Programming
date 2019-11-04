@@ -1,5 +1,5 @@
 #Constant array for Months
-MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+MONTHS = ('JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC')
 
 #Average rainfall
 #Define main function
@@ -39,6 +39,8 @@ def measureRain(rainFall):
     print('Total months of rainfall in data: {}'.format(len(rainFall)))
     print('Total rainfall: {:.2f} inches'.format(total))
     print('Average monthly rainfall: {:.2f}'.format(total/len(rainFall)))
+    print('The maximum rainfall was {}'.format(max(rainFall)))
+    print('The minimum rainfall was {}'.format(min(rainFall)))
     
 
 main()
