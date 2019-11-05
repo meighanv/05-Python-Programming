@@ -13,7 +13,6 @@ def main():
     total = int(gradeTest(contents,answers,incorrect))
     scoreTest(total,incorrect)
     
-
 def gradeTest(test,answers,incorrect):
     total = 0
     for i in range(len(answers)):

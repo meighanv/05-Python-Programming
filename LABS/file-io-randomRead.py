@@ -3,7 +3,7 @@ import random
 
 #Defining main function
 def main():
-        #Getting filename from input for filename
+    #Getting filename from input for filename
     filename = input('Provide the new file name:\n')
     #Reads the file of filename 
     f = open(filename, 'r')
