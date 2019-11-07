@@ -50,7 +50,7 @@ def freshStart(filename):
     #Create empty dictionary
     email_dict = {}
     #Let's the user know why they are being prompted for initial entries
-    print('The file {} is not detected. Starting fresh; please provide the first entry: ')
+    print('The file {} is not detected. Starting fresh; please provide the first entry: '.format(filename))
     #Prompts for initial entry
     email_dict.update({(input('Name: ')).lower(): (input('Email: ')).lower()})
     #writes dictionary to binary file
