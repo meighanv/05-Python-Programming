@@ -1,4 +1,5 @@
 import random
+import pickle
 from os import path
 
 print('Let\'s play Hangman! There is a word that you must \nguess by guessing letters one at a time. If the\n letter is present is will be populated. If not,\n then your person will start to be hung. \n 6 wrong questions and it\'s GAME OVER!')
@@ -13,17 +14,24 @@ def main():
     compAlpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     gameModes = ['c', 'i']
     mode = 'g'
+    hang = loadHang()
     while mode.lower() not in gameModes:
         mode = input('Which mode would you prefer:\n- (C)omputer Solo Mode\n- (I)nteractive Mode\n')
     if mode == 'i': 
+        name = input('Please provide your name to track your scores:\n')
+        scoreData = getProfile(name.lower())
+        deathState(hang, death)
         while state == False:
             print('You have {} wrong guesses remaining.'.format(6 - death))
-            death += userGuess(usedAlpha, answer, guess, compAlpha)
+            death += userGuess(usedAlpha, answer, guess)
+            deathState(hang, death)
             state = checkWin(death, answer, guess, state)
+        updateScores(scoreData, name, death)
     elif mode == 'c':
         while state == False:
             print('Computer has {} wrong guesses remaining.'.format(6 - death))
             death += compGuess(usedAlpha, answer, guess, compAlpha)
+            deathState(hang, death)
             state = checkWin(death, answer, guess, state)
 
 
@@ -121,6 +129,53 @@ def compGuess(usedAlpha, answer, guess, compAlpha):
         hit = 1
         print('Nope!')
     return hit
+
+def getProfile(name):
+    scoreFile = 'scores.dat'
+    scoreData = {}
+    if path.exists(scoreFile):
+        with open(scoreFile, 'rb') as scores:
+            end_of_file = False
+            while end_of_file == False:
+                try:
+                    #unpickle next object
+                    scoreData = pickle.load(scores)
+                except EOFError:
+                    #Set flag to indicate EOF reached
+                    end_of_file = True
+        print('Your score history:\n{}\n'.format(scoreData[name]))
+    else:
+        scoreData = {name: {'win':0, 'loss':0}}
+        with open(scoreFile, 'wb') as scores:
+            pickle.dump(scoreData, scores) 
+    
+    if name.lower() not in scoreData:
+            scoreData.update({name: {'win':0, 'loss':0}}) 
+    
+    return scoreData
+
+def updateScores(scoreData, name, death):
+    scoreFile = 'scores.dat'
+    if death >= 6:
+        scoreData[name]['loss'] += 1
+    else:
+        scoreData[name]['loss'] += 1
+    with open(scoreFile, 'wb') as scores:
+        pickle.dump(scoreData, scores)
+    
+def loadHang():
+    filename = 'death.txt'
+    with open(filename, 'r') as hang:
+        image = hang.readlines()
+    return image
+
+def deathState(hang, death):
+    start = death * 6
+    stop = start + 6
+    step = 1
+    for i in range(start,stop,step):
+        print(hang[i].rstrip('\n'))
+    print('\n')
 main()
 
 
@@ -170,8 +225,3 @@ Bonus:
         
     Have fun, get creative, and demonstrate what you've come up with.
 """
-
-
-
-
-
