@@ -29,27 +29,47 @@ from questions import Question
 import random
 import pickle
 
+#Define main function
 def main():
+    # Set filename for question bank
     filename = 'qbank.dat'
+
+    # Call the readData function to pickle in the data
     qbank = readData(filename)
     
     # setting the question bank index list to keep track of questions 
     # asked
     qindex = []
+
+    # Loops through all questions in question bank to create a list of indexes
     for i in range(len(qbank)):
         qindex.append(i)
+    
+    # Sets the turn at 1.
+    # Used for tracking the turn and player's turn
     turn = 1
+
+    # Initialize variables to track players scores
     p1score = 0
     p2score = 0
+
+    # Loops through all questions in the question bank
     for i in range(len(qbank)):
+
+        # Calls the askQuestion function and returns the result of 
+        # 1 or 0 (correct or incorrect) for addition to player score
         result = askQuestion(turn, qbank, qindex)
+
+        # Determines which player to credit the result to
         if turn % 2 == 1:
             p1score += result
         else:
             p2score += result
+        # Increments the turn
         turn += 1
-
+    # Prints scores
     print(f'\n\nPlayer 1 score:\n{p1score}\n\nPlayer 2 score:\n{p2score}\n')
+    # Determines and prints winner
     if p1score > p2score:
         print('Player 1 Wins!!!')
     elif p2score > p1score:
@@ -57,20 +77,37 @@ def main():
     else:
         print('Everybody Wins!!!')
 
+# Define ask question function
 def askQuestion(turn, qbank, qindex):
+    # Checks whose turn it is
     if turn % 2 == 1:
         print('Player 1\'s turn:')
+        # initializes prompt variable
         prompt = -1
+        # Random selection validation mechanism while keeping 
+        # track using the qindex
         while prompt not in qindex:
+            # Generates random number within the length 
+            # of the qbank
             prompt = random.randint(0,len(qbank)-1)
+        # Prints the question by calling the printQuestion function
         printQuestion(qbank, prompt)
+
+        # Storing the result of checkAnswer in points (T/F)
         points = checkAnswer(qbank, prompt)
+
+        # Removes the choice from the qindex so that 
+        # the choice (and the question) cannot be selected 
+        # again
         qindex.remove(prompt)
+
+        # Based on the state of points it returns 1 or 0
         if points == True:
             return 1
         else:
             return 0
-        
+
+    # Same logic as the 'if', but for player two    
     else:
         print('Player 2\'s turn:')
         prompt = -1
@@ -83,7 +120,6 @@ def askQuestion(turn, qbank, qindex):
             return 1
         else:
             return 0
-        
 
 def printQuestion(bank, prompt):
     print(f'{bank[prompt].get_question()}')

@@ -17,14 +17,14 @@ class RetailItem:
         self.__price = 0.0
 
     # Define setters
-    def set_desc(self):
-        self.__desc = input('Provide the product description:\n')
+    def set_desc(self, desc):
+        self.__desc = desc
 
-    def set_unitCount(self):
-        self.__unitCount = input('How many of this product do you have?\n')
+    def set_unitCount(self, unitCount):
+        self.__unitCount = unitCount
 
-    def set_price(self):
-        self.__price = input('What is the price of this product?\n')
+    def set_price(self, price):
+        self.__price = price
 
     # Define getters
     def get_desc(self):
@@ -36,7 +36,7 @@ class RetailItem:
     def get_price(self):
         return self.__price
 
-# Define main
+""" # Define main
 def main():
     # Initialize object storage list
     inventory = []
@@ -59,4 +59,4 @@ def main():
     for item in range(len(inventory)):
         print(f'Item#{item+1}\t{inventory[item].get_desc()}\t\t{inventory[item].get_unitCount()}\t\t{inventory[item].get_price()}')
 
-main()
+main() """

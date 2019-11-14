@@ -7,7 +7,7 @@ class Question:
         self.__answer2 = ''
         self.__answer3 = ''
         self.__answer4 = ''
-        self.__answer4 = ''
+        self.__correct = ''
 
     def set_question(self, statement):
         self.__question = statement
