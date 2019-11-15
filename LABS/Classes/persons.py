@@ -1,4 +1,4 @@
-class person:
+class Person:
     def __init__(self, name, address, number):
         self.__name = name
         self.__address = address
@@ -15,19 +15,19 @@ class person:
         self.__number = number
 
     # Getters
-    def get_name(self, name):
+    def get_name(self):
         self.__name
 
-    def get_address(self, address):
+    def get_address(self):
         self.__address
         
-    def get_number(self, number):
+    def get_number(self):
         self.__number
 
 
-class customer(person):
+class Customer(Person):
     def __init__(self, name, address, number, opt_in):
-        super().__init__(name, number)
+        super().__init__(name, address, number)
 
         self.__opt_in = opt_in
     
@@ -36,3 +36,5 @@ class customer(person):
 
     def get_opt_in(self):
         return self.__opt_in 
+
+

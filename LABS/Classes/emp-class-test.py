@@ -1,12 +1,13 @@
 import employees
 
+# Define main
 def main():
     #worker = createWorker()
     #displayWorker(worker)
     supervisor = createSup()
     displaySup(supervisor)
 
-
+# Define function to create a worker instance
 def createWorker():
     name = input('What is the employee\'s name?\n')
     num = 0
@@ -21,6 +22,7 @@ def createWorker():
     worker = employees.ProductionWorker(name, num, shift, pay_rate)
     return worker
 
+# Define function to display the worker object data
 def displayWorker(worker):
     print('\nEmployee Info:\n--------------\n')
     print('Name:\t', worker.get_name())
@@ -33,6 +35,7 @@ def displayWorker(worker):
     print('Shift: ', shiftText)
     print('Pay Rate: {:.2f}'.format(worker.get_pay_rate()))
 
+# Define function to create a supervisor 
 def createSup():
     name = input('What is the supervisor\'s name?\n')
     num = 0
@@ -47,11 +50,12 @@ def createSup():
     worker = employees.ShiftSupervisor(name, num, salary, prod_bonus)
     return worker
 
+# Define function to display the supervisor object data
 def displaySup(worker):
     print('\nEmployee Info:\n--------------\n')
-    print('Name:\t\t', worker.get_name())
+    print('Name:\t\t\t', worker.get_name())
     print('Employee ID:\t\t', worker.get_number())
-    print('Salary:\t\t${:.2f}'.format(worker.get_salary()))
+    print('Salary:\t\t\t${:.2f}'.format(worker.get_salary()))
     print('Production Bonus:\t${:.2f}'.format(worker.get_prod_bonus()))
     print()
 main()
