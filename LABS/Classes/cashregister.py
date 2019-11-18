@@ -16,7 +16,7 @@
     items for purchase. When the user is ready to check out, the program should display a list
     of all the items he or she has selected for purchase, as well as the total price.
  """
-
+from functools import reduce
 class CashRegister:
 
     def __init__ (self):
@@ -24,10 +24,12 @@ class CashRegister:
         self.__total = 0.0
 
     def set_total(self):
-        total = 0
-        for i in self.__purchase:
-            total += float(i.get_price()) * float(i.get_unitCount())
-        self.__total = total
+        # This code below was replaced by the uncommented lambda function
+        # total = 0
+        # for i in self.__purchase:
+        #     total += float(i.get_price()) * float(i.get_unitCount())
+        receipt = (item.get_price()*item.get_unitCount() for item in self.__purchase)
+        self.__total = reduce((lambda x,y: x + y), receipt)
 
     def purchase_item(self,item):
         self.__purchase.append(item)

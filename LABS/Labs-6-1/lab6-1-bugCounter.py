@@ -1,3 +1,5 @@
+from functools import reduce
+
 #Initializing constant array for days of the week
 DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
@@ -7,6 +9,7 @@ def main():
     #Calls the collect bugs function to capture bug count for each day of the week
     collectBugs(bugsCollected)
     print('You have collected {} bugs this week!'.format(totalBugs(bugsCollected)))
+
 def collectBugs(collection):
     for i in DAYS:
         #Each iteration calls the getBugs function for input collection 
@@ -25,12 +28,14 @@ def getBugs(day):
 
 #Calculates the total bugs collected 
 def totalBugs(bugs):
-    #Initialize total 
-    total = 0
-    #Loop through the bugs(array) to add to the total
-    for i in bugs:
-        #Adding the value of i to total
-        total += i
+    # Replacing original function code with lambda function
+    total = reduce((lambda x, y: x + y), bugs)
+    # #Initialize total 
+    # total = 0
+    # #Loop through the bugs(array) to add to the total
+    # for i in bugs:
+    #     #Adding the value of i to total
+    #     total += i
     return total
 
 main()

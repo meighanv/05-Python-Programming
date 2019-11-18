@@ -1,3 +1,5 @@
+from functools import reduce
+
 #Defining constant of days of the week
 DAYS = ('MON','TUE','WED','THU','FRI','SAT','SUN')
 
@@ -19,11 +21,11 @@ def getSales(salesArray,DAYS):
                 print('A valid sale number was not provided')
 
 def measureSales(salesArray):
-    total = 0.0
-    for sale in salesArray:
-        total += sale
+    total = reduce((lambda x, y: x + y), salesArray)
+    # for sale in salesArray:
+    #     total += sale
     print(f'Total sales for the week is ${total}')
-    print('Average sales for the week is ${}'.format(total/len(salesArray)))
+    print('Average sales for the week is ${:.2f}'.format(total/len(salesArray)))
 
 #Call main
 main()

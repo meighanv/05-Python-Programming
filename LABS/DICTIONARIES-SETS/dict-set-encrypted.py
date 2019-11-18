@@ -2,10 +2,13 @@
 codebook = {}
 alphanum ='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
 encoded = '098765432!@$#%^&*()_+=-][}{;\'":\\`~}]abcdefghijklmnopqrstuvwxyz'
-for i in range(len(alphanum)):
-    key = alphanum[i]
-    value = encoded[i]
-    codebook.update({key: value})
+# Modified to use zip function to replace this code
+# for i in range(len(alphanum)):
+#     key = alphanum[i]
+#     value = encoded[i]
+#     codebook.update({key: value})
+for alphanum, encoded in zip(alphanum,encoded):
+    codebook.update({alphanum: encoded})
 
 #Define main function
 def main():

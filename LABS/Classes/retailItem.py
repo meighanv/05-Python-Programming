@@ -31,10 +31,10 @@ class RetailItem:
         return self.__desc
 
     def get_unitCount(self):
-        return self.__unitCount
+        return float(self.__unitCount)
     
     def get_price(self):
-        return self.__price
+        return float(self.__price)
 
 """ # Define main
 def main():

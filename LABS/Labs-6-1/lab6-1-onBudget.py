@@ -1,3 +1,5 @@
+from functools import reduce
+
 #Define main
 def main():
     budget = getBudget()
@@ -27,9 +29,10 @@ def getExpenses(expenseList):
             
 
 def totalExp(expenseList):
-    total = 0.0
-    for i in expenseList:
-        total += float(i)
+    # Replace total calculation with reduce and lambda function
+    total = reduce((lambda x, y: x + y),expenseList)
+    # for i in expenseList:
+    #     total += float(i)
     return total
 
 def overOrUnder(cap,spent):

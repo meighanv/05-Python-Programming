@@ -9,7 +9,7 @@ def main():
     #Displays the unique words to the user
     print(unique)
     
-#this simple takes an array and casts/returns it as a set
+# This simply takes an array and casts/returns it as a set
 def getWords(original):
     #Iterate through each line
     newlist = []
