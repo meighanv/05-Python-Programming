@@ -1,5 +1,5 @@
 # reduce()
-# Receives two argsm function and iterable
+# Receives two args function and iterable
 # returns a single value
 # good for rolling computation to sequential 
 # pairs of values in a list

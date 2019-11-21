@@ -59,6 +59,6 @@ def readData(filename):
         except EOFError:
             #Set flag to indicate EOF reached
             end_of_file = True
-    emp_file.close()
+    data.close()
 
 main()

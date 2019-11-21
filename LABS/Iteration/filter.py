@@ -22,3 +22,10 @@ filteredList = filter(None, randomList)
 print('The filtered elements are ')
 for element in filteredList:
     print(element)
+
+# filter for words in a list that contain the letter 'e'
+words = ['list', 'done', 'exit']
+print(list(filter(lambda x: 'e' in x, words)))
+
+
+
