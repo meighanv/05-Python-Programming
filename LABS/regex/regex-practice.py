@@ -30,7 +30,7 @@ and improve it.
 ​
 8. Match the set of all valid Web site addresses (URLs) (start
 with a loose regex, and then try to tighten it as much as you
-can, yet maintain correct functionality).Try to break what we did in 
+can, yet maintain correct functionality). Try to break what we did in 
 class and improve it.
 ​
 9. type(). The type() built-in function returns a type object,
@@ -55,6 +55,10 @@ that matched the single or double-digit string representations of
 the months January to September (0?[1-9]). Create the regex
 that represents the remaining three months in the standard
 calendar.
+
+04-21-81
+10-31-2009
+31-31-3131
 ​
 Meighan, V
 ​
@@ -86,24 +90,23 @@ import re
 #     print(match)
 
 # Ex. 4******************************************
+import re
+import keyword as kw
+ids = """
+!gfg
+123
+_abc12
+abc%
+class
 
-# import keyword as kw
-# ids = """
-# gfg
-# 123
-# _abc12
-# #abc
-# class
+"""
 
+pattern = re.compile(r'\b[A-Za-z_^!][A-Za-z0-9_]*')
+matches = pattern.findall(ids)
 
-# """
-
-# pattern = re.compile(r'[A-Za-z_][A-Za-z0-9_]*')
-# matches = pattern.findall(ids)
-
-# for match in matches:
-#     if kw.iskeyword(match) == False:
-#         print(f'{match}: Valid Identifier')
+for match in matches:
+    if kw.iskeyword(match) == False:
+        print(f'{match}: Valid Identifier')
 
 # Ex. 5 ******************************************
 # pattern = re.compile(r'\d+\s[A-Za-z]*\s{1}[A-Za-z]*\s?\w*\s?\w*')
@@ -113,7 +116,34 @@ import re
 #     print(f'{match}')
 
 # Ex. 6 ******************************************
-pattern = re.compile(r'(w{3}\.)?([a-zA-Z0-9]*)(\.[a-zA-Z]{2,3})')
+# pattern = re.compile(r'(w{3}\.)?([a-zA-Z0-9]*)(\.[a-zA-Z]{2,3})')
+# matches = pattern.findall(string)
+
+# for match in matches:
+#     print(f'{match}')
+
+# Ex. 9 ******************************************
+# def rawType(object):
+#     #import re
+#     tempStr = str(type(object))
+#     pattern = pattern = re.compile(r'\'\w*\'')
+#     matches = pattern.findall(tempStr)
+#     return matches
+
+# testInt = 0
+# testString = 'who?'
+# testFloat = 0.01
+# testFunc = print
+# varList = [testInt, testString, testFloat, testFunc]
+
+# for i in varList:
+#     #print(type(i))
+#     print(rawType(i)[0])
+
+# Ex. 10 ******************************************
+# pattern = re.compile(r'[0-1]?[0-9][-/\s][0-3]?[0-9][-/\s][1-2]?[0-9]?[0-9]{2}')
+# pattern = re.compile(r'^([1-9]| 1[0-2])([-./\s])([1-9]|[1-2][0-9])([-./\s])([1-2]{2}[0-9]{2})')
+pattern = re.compile(r'\b[0-1]?[0-9][-/\s][0-3]?[0-9][-/\s][1-2]?[0-9]?[0-9]{2}') 
 matches = pattern.findall(string)
 
 for match in matches:
