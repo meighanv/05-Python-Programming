@@ -1,5 +1,5 @@
-filename = 'c:\\users\\student\\Documents\\IDF\\GIT\\help.txt'
-# This
+# This function is meant to read in the help text file to parse it into
+#  helpObjects that are returned as a list
 
 def parseHelp(filename):
     # Opening and reading the lines of the file
@@ -14,13 +14,10 @@ def parseHelp(filename):
     # Content is broken up later for proper parsing
  
     helpObjects = []
-    pattern = re.compile(r'Python ([\w]+) library.[\*]+\n\n(Description\: [\n \(\)\,\.\'\:\/\w-]+)\n\n(Example 1 \- [\w\n \(\),\.\'\:\/]+)\n\n(Example 2 \- [\w\n \(\),\.\'\:\/]+)\n\n')
+    pattern = re.compile(r'Python ([\w]+) library.[\*]+\n\nCopied from: [\w\:\/\.]+\n\n(Description\: [\n \(\)\,\.\'\:\/\w-]+)\n(Example 1 \- [\w\n \(\),\.\'\:\/]+)\n(Example 2 \- [\w\n \(\),\.\'\:\/]+)\n')
     matches = pattern.finditer(contents)  
-    
-    # print(next(matches).group(0))
+
     for match in matches:
-        #print(match.group(0))
-        
         lib = match.group(1)
         desc = match.group(2)
         ex1 = match.group(3)
