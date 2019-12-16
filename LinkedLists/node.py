@@ -6,19 +6,19 @@ class Node:
         self.data = data
         self.next = next
 
-# This is meant to instantiate nodes and we'll add methods to this 
+# This is meant to instantiate nodes and we'll add methods to this
 # class to add functionality
 class LinkedList:
     def __init__(self):
         self.head = None
-    
+
     # printing our linked list
     def printLinked(self):
         probe = self.head
         while probe != None:
             print(probe.data)
             probe = probe.next
-    
+
     # To add something to our linked list
     def append(self, data):
         # Instantiate a new node
@@ -53,7 +53,7 @@ class LinkedList:
             while index > 1 and probe.next != None:
                 probe = probe.next
                 index -= 1
-                # Insert new node after the node at position index -1 or last position 
+                # Insert new node after the node at position index -1 or last position
             probe.next = Node(data, probe.next)
 
     def delete(self, index):
@@ -71,7 +71,7 @@ class LinkedList:
 
     # Swapping the data at specified indicies with first node being 0
     # Too High of an index results in the last element being involved
-    # in the swap. 
+    # in the swap.
     def swapNode(self, index1, index2):
         # Setting and moving a probe for the 1st item
         probe1 = self.head
@@ -89,31 +89,31 @@ class LinkedList:
         probe2.data = tempData
 
     # This actually reverses the elements by swaping the data
-    # this preserves all the pointers 
-    #  
+    # this preserves all the pointers
+    #
     def reverse(self):
         # Sets an empty list to store the elements
         templist = []
         probe = self.head
         # Moving through the linked list and adding the data elements
-        # in existing order to the tempList 
+        # in existing order to the tempList
         while probe.next != None:
             templist.append(probe.data)
             probe = probe.next
         templist.append(probe.data)
-        
+
         # After resetting the probe
         probe = self.head
         # Sets the index for loop termination of all elements in tempList
         index = len(templist)
         # Walking backwards through tempList and forward through the
-        # linked list to reset each .data to the element stored in 
-        # tempList 
+        # linked list to reset each .data to the element stored in
+        # tempList
         while index > -1 and probe != None:
             probe.data = templist[index-1]
             probe = probe.next
             index -=1
-            
+
 
 
     def getIndex(self, index):
@@ -122,7 +122,7 @@ class LinkedList:
         while index > 1 and probe.next != None:
             probe = probe.next
             index -= 1
-            # Insert new node after the node at position index -1 or last position 
+            # Insert new node after the node at position index -1 or last position
         print(probe.data)
 
     def copy(self):
@@ -144,9 +144,9 @@ class LinkedList:
 """
 Circular Linked List - Special case of singly linked list
             Insertion and removal of the first node are special cases of
-            the insert ith and remove ith operations on a singly linked 
-            list. These are special b/c the head pointer must be reset. 
-            You can use circular liked lists with a dummy header node. 
+            the insert ith and remove ith operations on a singly linked
+            list. These are special b/c the head pointer must be reset.
+            You can use circular liked lists with a dummy header node.
             Contains a link from the last node back to the first node in
             the structure.
 """
@@ -159,14 +159,14 @@ class CircLinked:
         if not self.head:
             self.head = Node(data)
             self.head.next = self.head
-        else: 
+        else:
             newNode = Node(data)
             probe = self.head
             while probe.next != self.head:
                 probe = probe.next
             probe.next = newNode
             newNode.next = self.head
-    
+
 
 
 linked = LinkedList()
@@ -190,9 +190,8 @@ linked.append("F")
 # #linked.swapNode(0,67)
 # linked.reverse()
 # linked.printLinked()
-
-linked2 = linked.copy()
-linked.delete(2)
-linked.printLinked()
-linked2.printLinked()
-    
+#testing copy and integrity of shallow copy
+# linked2 = linked.copy()
+# linked.delete(2)
+# linked.printLinked()
+# linked2.printLinked()
