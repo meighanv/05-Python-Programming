@@ -1,25 +1,31 @@
 from socket import socket as Socket
 from socket import AF_INET, SOCK_STREAM
 
-HOSTNAME = 'localhost'  # on same host
-PORTNUMBER = 11267      # same port number
-BUFFER = 80             # size of the buffer
+def playGame(PLAYER, BUFFER):
+    choices = [0, 1, 2]
 
-DEALER = (HOSTNAME, PORTNUMBER)
-PLAYER = Socket(AF_INET, SOCK_STREAM)
-PLAYER.connect(DEALER)
+    print('Let\'s play Rock, Paper, Scissors!')
+    while True:
+        GUESS = -1
+        while int(GUESS) not in choices:
+            GUESS = input('Select 0 for Rock, 1 for Paper, 2 for Scissors: ')
+        PLAYER.send(GUESS.encode())
+        ANSWER = PLAYER.recv(BUFFER).decode()
+        print('>', ANSWER)
+        if ANSWER != 'TIE':
+            break
 
-choices = [0, 1, 2]
+def main():
+    HOSTNAME = 'localhost'  # on same host
+    PORTNUMBER = 11267      # same port number
+    BUFFER = 80             # size of the buffer
 
-print('Let\'s play Rock, Paper, Scissors!')
-while True:
-    GUESS = -1
-    while int(GUESS) not in choices:
-        GUESS = input('Select 0 for Rock, 1 for Paper, 2 for Scissors: ')
-    PLAYER.send(GUESS.encode())
-    ANSWER = PLAYER.recv(BUFFER).decode()
-    print('>', ANSWER)
-    if ANSWER != 'TIE':
-        break
+    DEALER = (HOSTNAME, PORTNUMBER)
+    PLAYER = Socket(AF_INET, SOCK_STREAM)
+    PLAYER.connect(DEALER)
 
-PLAYER.close()
+    playGame(PLAYER, BUFFER)
+
+    PLAYER.close()
+
+main()
