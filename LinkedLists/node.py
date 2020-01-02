@@ -50,12 +50,38 @@ class LinkedList:
             self.head = Node(data, self.head)
         else:
             probe = self.head
+            while index > 0 and probe.next != None:
+                probe = probe.next
+                index -= 1
+                # Insert new node after the node at position index -1 or last position
+            probe.next = Node(data, probe.next)
+    
+    # Inserting before index
+    def insertBefore(self, index, data):
+        # If empty or index is less than 1
+        if self.head is None or index <= 0:
+            self.head = Node(data, self.head)
+        else:
+            probe = self.head
             while index > 1 and probe.next != None:
                 probe = probe.next
                 index -= 1
                 # Insert new node after the node at position index -1 or last position
             probe.next = Node(data, probe.next)
-
+    
+    # Inserting after index
+    def insertAfter(self, index, data):
+        # If empty or index is less than 1
+        if self.head is None or index <= 0:
+            self.head = Node(data, self.head)
+        else:
+            probe = self.head
+            while index > -1 and probe.next != None:
+                probe = probe.next
+                index -= 1
+                # Insert new node after the node at position index -1 or last position
+            probe.next = Node(data, probe.next)
+    
     def delete(self, index):
         if index <= 0 or self.head.next is None:
             removedItem = self.head.data
@@ -176,6 +202,9 @@ linked.append("C")
 linked.append("D")
 linked.append("E")
 linked.append("F")
+linked.insertBefore(3,"Before")
+linked.insertAfter(3,"After")
+linked.printLinked()
 #linked.prepend("I Should be at the beginning")
 #linked.insert(2, "This I inserted")
 #linked.insert(67, "I inserted this too, with a high index")
