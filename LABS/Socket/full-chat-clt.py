@@ -6,7 +6,7 @@ import argparse
 BUFSIZ = 1024
 
 # Defining Main
-def main():    
+def main():    end
     # Creating a thread for receiving chat data; pointing it to the 
     # receive function.
     receive_thread = Thread(target=receive)
