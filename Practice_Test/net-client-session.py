@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import socket
-from socket import AF_INET, socket, SOCK_STREAM
 import random
 from random import randint
+from socket import AF_INET, socket, SOCK_STREAM
 import re
 
 '''
@@ -64,7 +64,7 @@ i=0
 while True:
 
     decoded  = hex(int(session_keys[i], 16)^int(encoded,16))
-    print("Trying key {}\n".format(session_keys[i]))
+    print("Trying key {}".format(session_keys[i]))
     # print(type(decoded.encode()))
     # print(decoded)
     # print(int(decoded,16))
@@ -73,11 +73,12 @@ while True:
     ## Recv key match status
     response = receive(sock)
     if ("Success! You found the key:" in response.decode()):
-        print("succes")
-        
+        successMessage = response.decode()
+        print("Success! You found the key!")
         break
+
     if ('INVALID' in response.decode()):
-        print("Invalid Key")
+        print("Invalid Key\n")
     
     ## Connection success message
     response = receive(sock)
@@ -97,7 +98,6 @@ while True:
 
 '''
     Message recieved from server:
-
     Success = "SUCCESS, you found the key"
     Incorrect = "INVALID KEY"
 '''
@@ -106,7 +106,6 @@ while True:
 
 
 
-successMessage = response.decode()
 
 
 
