@@ -15,12 +15,17 @@ def duplicateValues(aDictionary):
    2- Another simple way is to sort the values of the dictionary then look if there are duplicate values
 
    """
-   for i in range(20):
-      value = aDictionary[i]
-      for j in range(i+1,20):
-         if aDictionary[j] == value:
-            return 1
-   return 0
+   # Get a list of values in a variable
+   values = list(aDictionary.values())
+   # Get a set of values from the same dictionary (unique values only)
+   unique = set(aDictionary.values())
+   # If there are no dupes then the set and list should have the same length
+   # therefore, if these are unequal then duplicates are present
+   if (len(unique) != len(values)):
+      return 1
+   else:
+      #otherwise there are no duplicates
+      return 0
 
 # # dictionary1 has duplicate values: 53 and 69
 # dictionary1 = {0:53, 1:76, 2:16, 3:17, 4:43, 5:30, 6:38, 7:26, 8:4, 9:53, 10:69, 11:80, 12:71, 13:12, 14:69, 15:7, 16:82, 17:84, 18:87, 19:15}
