@@ -6,13 +6,19 @@
 """
 
 def binary_to_decimal(binaryNumber):
-    #Converting the int value to string
+    #Cast the int value as string
     string = str(binaryNumber)
+    #Start try accept to handle value error
     try:
+        #store the decimal value as a base 2 (binary) int
         decimal = int(string,2)
+        # Unit test does not want ato convert negative numbers as they are represented differently in binary
         if decimal < 0:
+            # Return invalid input if the decimal is less than 0 (negative)
             return f'Invalid Input'
         else:
+            # Otherwise return the decimal value
             return decimal
+    #In the case of int value containing anything other than 1's and 0's return 'Invalid Input'
     except ValueError:
         return f'Invalid Input'
